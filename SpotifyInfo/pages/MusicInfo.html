@@ -1,0 +1,76 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+
+<style>
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-family: 'Fixedsys Regular', sans-serif;
+}
+
+#outer {
+  width: 100%;
+  text-align: center;
+}
+
+#track_info {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: white;
+	font-size: 32px;
+	border-radius: 5px 5px 5px 5px;
+	background: #282828;
+	display: inline-block;
+}
+
+#track {
+	display: inline-block;
+	font-size: 26px;
+}
+
+#artist {	
+	display: inline-block;	
+	font-size: 22px;
+	color: #a0a0a0;
+}
+
+</style>
+
+</head>
+<body>
+<div id="outer" style="width:100%">
+	<div id="track_info">
+		&#9834; <div id="track">...</div> | <div id="artist">...</div>
+	</div>
+<div>
+
+<script>
+updateInfo();
+var t=setInterval(updateInfo, 1000);
+
+function updateInfo() {	
+
+	$.getJSON("/current/", function(json) {
+		var track = json.item.name;
+		var artists = json.item.artists;
+		var artist = json.item.artists[0].name;
+		for (var i=1; i<artists.length; i++) {
+			artist += ", "+artists[i].name;
+		}
+		$("#track").html(track);
+		$("#artist").html(artist);
+	});
+}
+ 
+</script>
+
+</body>
+<html>
