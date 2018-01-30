@@ -85,10 +85,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="SpotifyInfo_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="pages\MusicInfo.html">
+    <Content Include="pages\TrackInfo.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

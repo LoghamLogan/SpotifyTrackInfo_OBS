@@ -31,9 +31,9 @@ namespace SpotifyInfo
         private static void ConfigCheck()
         {
             // Quick/simple checks for valid config.
-            if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["spotify_api_key"]))
+            if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["spotify_client_id"]))
             {
-                throw new Exception("No spotify api key found in config (spotify_api_key)");
+                throw new Exception("No spotify api key found in config (spotify_client_api_key)");
             }
             if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["webaddr_render"]))
             {
@@ -141,7 +141,7 @@ namespace SpotifyInfo
             WebAPIFactory webApiFactory = new WebAPIFactory(
                 "http://localhost/",
                 int.Parse(ConfigurationManager.AppSettings["spotify_api_port"]), // def. 8000
-                ConfigurationManager.AppSettings["spotify_api_key"],
+                ConfigurationManager.AppSettings["spotify_client_id"],
                 Scope.UserReadPlaybackState,
                 TimeSpan.FromSeconds(20)
             );
@@ -281,7 +281,7 @@ namespace SpotifyInfo
         {
             try
             {
-                return File.ReadAllText(Directory.GetCurrentDirectory() + "/pages/MusicInfo.html", System.Text.Encoding.UTF8);
+                return File.ReadAllText(Directory.GetCurrentDirectory() + "/pages/TrackInfo.html", System.Text.Encoding.UTF8);
             }
             catch (Exception ex) {
                 Console.Error.WriteLine(ex.Message);

@@ -58,7 +58,7 @@ var t=setInterval(updateInfo, 1000);
 
 function updateInfo() {	
 
-	$.getJSON("/current/", function(json) {
+	$.getJSON("/json/", function(json) {
 		var track = json.item.name;
 		var artists = json.item.artists;
 		var artist = json.item.artists[0].name;
