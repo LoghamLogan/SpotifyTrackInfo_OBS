@@ -33,21 +33,21 @@ namespace SpotifyInfo
             // Quick/simple checks for valid config.
             if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["spotify_api_key"]))
             {
-                throw new Exception("No spotify api key found in App.config (spotify_api_key)");
+                throw new Exception("No spotify api key found in config (spotify_api_key)");
             }
             if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["webaddr_render"]))
             {
-                throw new Exception("webaddr_render not set in App.config");
+                throw new Exception("webaddr_render not set in config");
             }
             if (String.IsNullOrEmpty(ConfigurationManager.AppSettings["webaddr_json"]))
             {
-                throw new Exception("webaddr_json not set in App.config");
+                throw new Exception("webaddr_json not set in config");
             }
             int result = -1;
             int.TryParse(ConfigurationManager.AppSettings["spotify_api_port"], out result);
             if (result == -1)
             {
-                throw new Exception("Invalid spotify webapi port defined");
+                throw new Exception("Invalid spotify webapi port defined in config");
             }            
         }
 
